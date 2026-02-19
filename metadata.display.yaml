@@ -33,9 +33,16 @@ spec:
         gateway_name:
           name: gateway_name
           title: Gateway Name
+          regexValidation: ^[a-z](?:[a-z0-9-]{0,61}[a-z0-9])?$
+          validation: Gateway name must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens and cannot end with a hyphen.
         google_managed_governed_access_path:
           name: google_managed_governed_access_path
           title: Google Managed Governed Access Path
+          enumValueLabels:
+            - label: Agent to Anywhere
+              value: AGENT_TO_ANYWHERE
+            - label: Client to Agent
+              value: CLIENT_TO_AGENT
         labels:
           name: labels
           title: Labels
@@ -66,3 +73,9 @@ spec:
         timeout_update:
           name: timeout_update
           title: Timeout Update
+    runtime:
+      outputs:
+        agent_gateway_id:
+          visibility: VISIBILITY_ROOT
+        mtls_endpoint:
+          visibility: VISIBILITY_ROOT
